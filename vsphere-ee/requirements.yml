@@ -2,3 +2,4 @@
 collections:
   - 'cloud.common'
   - 'vmware.vmware_rest'
+  - 'community.vwmare'
