@@ -107,6 +107,12 @@ jobs:
           ansible -m lineinfile -a "path=./execution-environment.yml regexp='^\ \ \ \ ADD\ CA.crt' insertbefore='RUN\ pip3' line='    ADD ca.crt /etc/pki/ca-trust/source/anchors/demolab-ca.crt'" localhost
         if: ${{ inputs.CA }}
 
+      - name: add updat-ca-trust to ee build file
+        working-directory: ${{ inputs.EE_FOLDER_NAME }}
+        run: |
+          ansible -m lineinfile -a "path=./execution-environment.yml regexp='^\ \ \ \ RUN\ update-ca-trust' insertbefore='RUN\ pip3' line='    RUN update-ca-trust'" localhost
+        if: ${{ inputs.CA }}
+
       - name: Create the Containerfile file
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
         run: ansible-builder create
