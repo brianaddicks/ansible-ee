@@ -17,6 +17,10 @@ on:
         default: 'latest'
         required: true
         type: string
+      CA:
+        description: 'optional CA crt to add to container'
+        required: false
+        type: string
     secrets:
       REDHAT_PASSWORD:
         description: 'needed for registry login'
@@ -90,6 +94,18 @@ jobs:
           sed -i "s/my_ah_token/$AH_TOKEN/1" ansible.cfg
         env:
           AH_TOKEN: ${{ secrets.AH_TOKEN }}
+
+      - name: add trusted CA it provided
+        working-directory: ${{ inputs.EE_FOLDER_NAME }}
+        run: |
+          echo $CA > ca.crt
+        env:
+          CA: ${{ inputs.CA }}
+
+      - name: test for ansible
+        working-directory: ${{ inputs.EE_FOLDER_NAME }}
+        run: |
+          ansible --version
 
       - name: Create the Containerfile file
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
