@@ -101,11 +101,19 @@ jobs:
           echo $CA > ca.crt
         env:
           CA: ${{ inputs.CA }}
+        if: ${{ inputs.CA }}
 
       - name: test for ansible
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
         run: |
           ansible --version
+        if: ${{ inputs.CA }}
+
+      - name: add CA copy to ee build file
+        working-directory: ${{ inputs.EE_FOLDER_NAME }}
+        run: |
+          ansible -m lineinfile -a "path=./execution-environment.yml regexp='^\ \ \ \ ADD\ CA.crt' insertbefore='RUN\ pip3' line='    ADD ca.crt /etc/pki/ca-trust/source/anchors/demolab-ca.crt'" localhost
+        if: ${{ inputs.CA }}
 
       - name: Create the Containerfile file
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
