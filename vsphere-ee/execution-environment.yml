@@ -9,6 +9,7 @@ dependencies:
 
 additional_build_steps:
   prepend: |
+    RUN yum install -y ca-certificates
     RUN pip3 install --upgrade pip setuptools
   append: |
     LABEL quay.expires-after="45d"
