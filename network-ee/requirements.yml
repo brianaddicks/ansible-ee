@@ -1,0 +1,25 @@
+---
+collections:
+  - amazon.aws
+  - ansible.netcommon
+  - ansible.network
+  - ansible.posix
+  - ansible.security
+  - ansible.utils
+  - ansible.controller
+  - arista.eos
+  - cisco.asa
+  - cisco.ios
+  - cisco.iosxr
+  - cisco.nxos
+  - cloud.common
+  - frr.frr
+  - ibm.qradar
+  - junipernetworks.junos
+  - kubernetes.core
+  - openvswitch.openvswitch
+  - servicenow.itsm
+  - splunk.es
+  - trendmicro.deepsec
+  - vmware.vmware_rest
+  - vyos.vyos
