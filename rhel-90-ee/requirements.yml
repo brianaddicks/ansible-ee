@@ -4,6 +4,7 @@ collections:
   - community.general
   - redhat.rhel_system_roles
   - redhat.insights
+  - ansible.posix
 roles:
   - linux-system-roles.firewall
   - redhatinsights.insights-client
