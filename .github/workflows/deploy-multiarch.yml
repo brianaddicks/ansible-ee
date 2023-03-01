@@ -95,23 +95,23 @@ jobs:
         env:
           AH_TOKEN: ${{ secrets.AH_TOKEN }}
 
-      - name: test for ansible
-        working-directory: ${{ inputs.EE_FOLDER_NAME }}
-        run: |
-          ansible --version
-        if: ${{ inputs.CA }}
+      # - name: test for ansible
+      #   working-directory: ${{ inputs.EE_FOLDER_NAME }}
+      #   run: |
+      #     ansible --version
+      #   if: ${{ inputs.CA }}
 
-      - name: add CA copy to ee build file
-        working-directory: ${{ inputs.EE_FOLDER_NAME }}
-        run: |
-          ansible -m lineinfile -a "path=./execution-environment.yml regexp='^\ \ \ \ ADD\ CA.crt' insertbefore='RUN\ pip3' line='    ADD ca.crt /etc/pki/ca-trust/source/anchors/demolab-ca.crt'" localhost
-        if: ${{ inputs.CA }}
+      # - name: add CA copy to ee build file
+      #   working-directory: ${{ inputs.EE_FOLDER_NAME }}
+      #   run: |
+      #     ansible -m lineinfile -a "path=./execution-environment.yml regexp='^\ \ \ \ ADD\ CA.crt' insertbefore='RUN\ pip3' line='    ADD ca.crt /etc/pki/ca-trust/source/anchors/demolab-ca.crt'" localhost
+      #   if: ${{ inputs.CA }}
 
-      - name: add updat-ca-trust to ee build file
-        working-directory: ${{ inputs.EE_FOLDER_NAME }}
-        run: |
-          ansible -m lineinfile -a "path=./execution-environment.yml regexp='^\ \ \ \ RUN\ update-ca-trust' insertbefore='RUN\ pip3' line='    RUN update-ca-trust'" localhost
-        if: ${{ inputs.CA }}
+      # - name: add updat-ca-trust to ee build file
+      #   working-directory: ${{ inputs.EE_FOLDER_NAME }}
+      #   run: |
+      #     ansible -m lineinfile -a "path=./execution-environment.yml regexp='^\ \ \ \ RUN\ update-ca-trust' insertbefore='RUN\ pip3' line='    RUN update-ca-trust'" localhost
+      #   if: ${{ inputs.CA }}
 
       - name: Create the Containerfile file
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
