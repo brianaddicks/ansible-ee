@@ -122,7 +122,7 @@ jobs:
         run: cp context/Containerfile context/Dockerfile
 
       - name: add trusted CA it provided
-        working-directory: ${{ inputs.EE_FOLDER_NAME }}/context/
+        working-directory: ${{ inputs.EE_FOLDER_NAME }}/context/_build/
         run: |
           echo $CA > ca.crt
         env:

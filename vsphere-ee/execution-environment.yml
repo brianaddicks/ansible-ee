@@ -9,6 +9,7 @@ dependencies:
 
 additional_build_steps:
   prepend: |
+    RUN cp *.crt /etc/pki/ca-trust/source/anchors && update-ca-trust
     RUN pip3 install --upgrade pip setuptools
   append: |
     LABEL quay.expires-after="45d"
