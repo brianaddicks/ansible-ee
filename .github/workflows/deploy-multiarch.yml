@@ -117,6 +117,10 @@ jobs:
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
         run: ansible-builder create
 
+      - name: Update ContainerFile to cp CA files
+        working-directory: ${{ inputs.EE_FOLDER_NAME }}/context/
+        run: ansible localhost -m ansible.builtin.lineinfile -a "dest=./Containerfile insertafter='^RUN ANSIBLE_GALAXY_DISABLE_GPG_VERIFY' line='RUN cp *.crt /etc/pki/ca-trust/source/anchors && update-ca-trust'"
+
       - name: Create the Dockerfile file
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
         run: cp context/Containerfile context/Dockerfile
