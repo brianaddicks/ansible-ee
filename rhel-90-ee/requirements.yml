@@ -6,6 +6,4 @@ collections:
   - redhat.insights
   - ansible.posix
 roles:
-  - linux-system-roles.firewall
-  - redhatinsights.insights-client
   - redhatofficial.rhel8_stig
