@@ -2,3 +2,4 @@
 collections:
   - redhat_cop.controller_configuration
   - ansible.controller
+  - ansible.windows
