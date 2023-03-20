@@ -1,2 +1,2 @@
 oci
-pyOpenSSL
+pyOpenSSL>=22.0
