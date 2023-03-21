@@ -24,7 +24,6 @@ jobs:
     with:
       EE_FOLDER_NAME: 'vsphere-ee'
       EE_IMAGE_TAG: 'latest'
-      CA: ${{ secrets.VCENTER_CA }}
 
     secrets:
       REDHAT_USERNAME: ${{ secrets.REDHAT_USERNAME }}
@@ -32,3 +31,4 @@ jobs:
       QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
       QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
       AH_TOKEN: ${{ secrets.AH_TOKEN }}
+      CA: ${{ secrets.VCENTER_CA }}

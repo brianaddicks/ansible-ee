@@ -17,10 +17,6 @@ on:
         default: 'latest'
         required: true
         type: string
-      CA:
-        description: 'optional CA crt to add to container'
-        required: false
-        type: string
     secrets:
       REDHAT_PASSWORD:
         description: 'needed for registry login'
@@ -36,6 +32,9 @@ on:
         required: false
       AH_TOKEN:
         description: 'API token for hosted automation hub'
+        required: false
+      CA:
+        description: 'optional CA crt to add to container'
         required: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -120,7 +119,7 @@ jobs:
       - name: Update ContainerFile to cp CA files
         working-directory: ${{ inputs.EE_FOLDER_NAME }}/context/
         run: ansible localhost -m ansible.builtin.lineinfile -a "dest=./Containerfile insertafter='^RUN ANSIBLE_GALAXY_DISABLE_GPG_VERIFY' line='RUN cp *.crt /etc/pki/ca-trust/source/anchors && update-ca-trust'"
-        if: ${{ inputs.CA }}
+        if: ${{ secrets.CA }}
 
       - name: Create the Dockerfile file
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
@@ -131,8 +130,8 @@ jobs:
         run: |
           echo $CA > ca.crt
         env:
-          CA: ${{ inputs.CA }}
-        if: ${{ inputs.CA }}
+          CA: ${{ secrets.CA }}
+        if: ${{ secrets.CA }}
 
       - name: Build Multiarch Containers
         id: dockerbuild
