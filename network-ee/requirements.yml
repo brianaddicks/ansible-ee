@@ -8,6 +8,7 @@ collections:
   - name: ansible.security
   - name: ansible.utils
   - name: arista.eos
+  - name: arubanetworks.aoscx
   - name: cisco.asa
   - name: cisco.ios
   - name: cisco.iosxr
