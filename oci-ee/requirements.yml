@@ -1,6 +1,4 @@
 ---
 collections:
   - 'oracle.oci'
-  - name: https://github.com/brianaddicks/rh_console_imagebuilder.git
-    type: git
-    version: devel
+  - brianaddicks.rh_console_imagebuilder
