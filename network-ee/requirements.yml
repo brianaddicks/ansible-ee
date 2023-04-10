@@ -24,6 +24,7 @@ collections:
   - name: trendmicro.deepsec
   - name: vmware.vmware_rest
   - name: vyos.vyos
+  - name: community.network
   - name: https://github.com/redhat-cop/network.base.git
     type: git
     version: main
