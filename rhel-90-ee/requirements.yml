@@ -8,6 +8,7 @@ collections:
 roles:
   - linux-system-roles.firewall
   - linux-system-roles.storage
+  - linux-system-roles.selinux
   - redhatinsights.insights-client
   - redhatofficial.rhel8_stig
   - geerlingguy.nfs
