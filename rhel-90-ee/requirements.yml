@@ -5,8 +5,8 @@ collections:
   - redhat.rhel_system_roles
   - redhat.insights
   - ansible.posix
-  - geerlingguy.nfs
 roles:
   - linux-system-roles.firewall
   - redhatinsights.insights-client
   - redhatofficial.rhel8_stig
+  - geerlingguy.nfs
