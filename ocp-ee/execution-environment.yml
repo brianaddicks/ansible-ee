@@ -5,11 +5,11 @@ ansible_config: './ansible.cfg'
 
 dependencies:
   galaxy: requirements.yml
-  #python: requirements.txt
+  python: requirements.txt
+  system: bindep.txt
 
 additional_build_steps:
   prepend: |
     RUN pip3 install --upgrade pip setuptools
   append: |
-    RUN git clone https://github.com/kubernetes-incubator/external-storage.git kubernetes-incubator
     LABEL quay.expires-after="45d"
