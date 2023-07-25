@@ -2,3 +2,4 @@
 collections:
   - 'oracle.oci'
   - brianaddicks.rh_console_imagebuilder
+  - community.general
