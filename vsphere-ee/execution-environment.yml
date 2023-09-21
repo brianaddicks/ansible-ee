@@ -1,20 +1,4 @@
 ---
-version: 1
-
-ansible_config: './ansible.cfg'
-
-dependencies:
-  galaxy: requirements.yml
-  python: requirements.txt
-
-additional_build_steps:
-  prepend: |
-    RUN pip3 install --upgrade pip setuptools
-  append: |
-    LABEL quay.expires-after="45d"
-
-
----
 version: 3
 
 dependencies:
