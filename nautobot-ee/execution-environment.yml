@@ -1,0 +1,26 @@
+---
+version: 3
+
+dependencies:
+  galaxy:
+    collections:
+      - 'networktocode.nautobot'
+  python:
+    - pynautobot
+
+# options:
+#   package_manager_path: /usr/bin/microdnf
+
+additional_build_files:
+  - src: files
+    dest: configs
+
+additional_build_steps:
+  prepend_galaxy:
+    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+    - ARG AH_TOKEN
+  # prepend_base:
+  #   - COPY _build/configs/cert.pem /etc/pki/ca-trust/source/anchors/cert.pem
+  #   - RUN update-ca-trust
+  append_final: |
+    LABEL quay.expires-after="45d"
