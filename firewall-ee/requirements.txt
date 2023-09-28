@@ -1,2 +1,2 @@
 pan-os-python
-json_query
+jmespath
