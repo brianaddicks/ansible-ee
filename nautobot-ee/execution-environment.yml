@@ -6,7 +6,7 @@ dependencies:
     collections:
       - 'networktocode.nautobot'
       - netbox.netbox
-      - community.general
+      # - community.general
   python:
     - pynautobot
     - pytz
