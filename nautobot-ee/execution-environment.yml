@@ -7,7 +7,7 @@ dependencies:
       - 'networktocode.nautobot'
       - netbox.netbox
       - name: community.general
-        version: ">=7.0.0"
+        version: ">=7.1.0"
   python:
     - pynautobot
     - pytz
