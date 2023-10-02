@@ -6,10 +6,12 @@ dependencies:
     collections:
       - 'networktocode.nautobot'
       - netbox.netbox
+      - community.general
   python:
     - pynautobot
     - pytz
     - pynetbox
+    - jmespath
 
 # options:
 #   package_manager_path: /usr/bin/microdnf
