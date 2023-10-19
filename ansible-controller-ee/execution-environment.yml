@@ -1,14 +1,29 @@
 ---
-version: 1
+version: 3
 
-ansible_config: './ansible.cfg'
+images:
+  base_image:
+    name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.15.4-4
 
 dependencies:
-  galaxy: requirements.yml
-  python: requirements.txt
+  galaxy:
+    collections:
+      - infra.controller_configuration
+      - ansible.controller
+      - ansible.windows
+
+options:
+  package_manager_path: /usr/bin/microdnf
+
+additional_build_files:
+  - src: files
+    dest: configs
 
 additional_build_steps:
-  prepend: |
-    RUN pip3 install --upgrade pip setuptools
-  append: |
+  prepend_base:
+    - RUN pip3 install --upgrade pip setuptools
+  prepend_galaxy:
+    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+    - ARG AH_TOKEN
+  append_final: |
     LABEL quay.expires-after="45d"
