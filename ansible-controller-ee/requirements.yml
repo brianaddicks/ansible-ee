@@ -1,5 +1,5 @@
 ---
 collections:
-  - infra.controller_configuration
+  - redhat_cop.controller_configuration
   - ansible.controller
   - ansible.windows
