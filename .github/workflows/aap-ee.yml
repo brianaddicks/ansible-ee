@@ -20,7 +20,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   call-deploy-workflow:
-    uses:  brianaddicks/ansible-ee/.github/workflows/deploy-multiarch3.yml@main
+    uses:  brianaddicks/ansible-ee/.github/workflows/deploy-builder3.yml@main
     with:
       EE_FOLDER_NAME: 'aap-ee'
       EE_IMAGE_TAG: 'latest'
