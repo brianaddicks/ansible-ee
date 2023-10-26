@@ -117,6 +117,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          secrets: |
+            "ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_TOKEN=${{ secrets.AH_TOKEN }}"
 
       # - name: Build image
       #   id: build-image
