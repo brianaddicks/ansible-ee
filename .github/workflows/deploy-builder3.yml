@@ -94,9 +94,9 @@ jobs:
           tags: |
             ${{ inputs.EE_IMAGE_TAG }}
             ${{ github.sha }}
-          registry: quay.io/${{ secrets.QUAY_USER }}/
-          username: ${{ secrets.REDHAT_USERNAME }}
-          password: ${{ secrets.REDHAT_PASSWORD }}
+          registry: quay.io/${{ secrets.QUAY_USERNAME }}/
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_PASSWORD }}
 
       - name: Print summary
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
