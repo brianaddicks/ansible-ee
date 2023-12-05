@@ -22,7 +22,7 @@ jobs:
   call-deploy-workflow:
     uses:  brianaddicks/ansible-ee/.github/workflows/deploy-multiarch3.yml@main
     with:
-      EE_FOLDER_NAME: 'dynatrace-ee2'
+      EE_FOLDER_NAME: 'dynatrace-ee'
       EE_IMAGE_TAG: 'latest'
     secrets:
       REDHAT_USERNAME: ${{ secrets.REDHAT_USERNAME }}
