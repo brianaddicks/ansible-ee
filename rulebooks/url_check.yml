@@ -1,0 +1,37 @@
+---
+- name: Listen for events on a webhook
+  hosts: all
+  sources:
+    - name: watch our site for outage
+      ansible.eda.url_check:
+        urls:
+          - "http://eda-web2"
+        delay: 4
+
+  rules:
+    - name: restart web server
+      condition: event.url_check.status == "down"
+      throttle:
+        once_within: 169 seconds
+        group_by_attributes:
+          - event.url_check.url
+      actions:
+        - debug:
+        - run_job_template:
+            name: "Linux - Webserver Setup"
+            organization: "Default"
+
+    # - name: Problem payload Dynatrace for App Failure rate increase issue
+    #   condition: event.problemTitle contains "Failure rate increase"
+    #   action:
+    #     run_job_template:
+    #       name: "Remediate Application issue"
+    #       organization: "Default"
+    # - name: Update comments in Dynatrace
+    #   condition:
+    #     all:
+    #       - event.status == "OPEN"
+    #   action:
+    #     run_playbook:
+    #       name: dt-update-comments.yml
+
