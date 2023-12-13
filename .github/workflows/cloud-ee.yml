@@ -1,5 +1,5 @@
 # Workflow name
-name: Azure EE Build
+name: Cloud EE Build
 
 # Controls when the workflow will run
 on:
@@ -8,7 +8,7 @@ on:
     branches:
       - main
     paths:
-      - 'azure-ee/**'
+      - 'cloud-ee/**'
 
   # Schedule workflow run at 00:00 on Sunday
   # schedule:
@@ -20,10 +20,12 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   call-deploy-workflow:
+    # uses:  brianaddicks/ansible-ee/.github/workflows/deploy-builder3.yml@main
     uses:  brianaddicks/ansible-ee/.github/workflows/deploy-multiarch3.yml@main
     with:
-      EE_FOLDER_NAME: 'azure-ee'
+      EE_FOLDER_NAME: 'cloud-ee'
       EE_IMAGE_TAG: 'latest'
+
     secrets:
       REDHAT_USERNAME: ${{ secrets.REDHAT_USERNAME }}
       REDHAT_PASSWORD: ${{ secrets.REDHAT_PASSWORD }}
