@@ -9,7 +9,8 @@ dependencies:
   galaxy:
     collections:
       - infra.controller_configuration
-      - ansible.controller
+      - awx.awx
+      # - ansible.controller
       - ansible.windows
 
 options:
