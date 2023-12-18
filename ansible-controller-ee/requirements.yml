@@ -1,5 +1,6 @@
 ---
 collections:
   - redhat_cop.controller_configuration
-  - ansible.controller
+  - awx.awx
+  # - ansible.controller
   - ansible.windows
