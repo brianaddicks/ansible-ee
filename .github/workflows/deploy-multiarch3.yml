@@ -119,6 +119,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             "ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN=${{ secrets.AH_TOKEN }}"
+            "ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN=${{ secrets.AH_TOKEN }}"
 
       # - name: Build image
       #   id: build-image
