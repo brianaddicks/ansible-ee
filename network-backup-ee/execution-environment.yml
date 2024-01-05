@@ -11,7 +11,7 @@ dependencies:
       - network.backup
       - cisco.ios
       - arista.eos
-      - juniper.junos
+      - junipernetworks.junos
 
 options:
   package_manager_path: /usr/bin/microdnf
