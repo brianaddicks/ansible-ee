@@ -14,7 +14,7 @@ dependencies:
     - inflection
     - azure-kusto-ingest
     - azure-kusto-data
-    - jmes_path
+    - jmespath
 
 options:
   package_manager_path: /usr/bin/microdnf
