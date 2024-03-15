@@ -16,6 +16,7 @@ dependencies:
       - microsoft.ad
   python:
     - pypsrp
+    - 1password
 
 options:
   package_manager_path: /usr/bin/microdnf
