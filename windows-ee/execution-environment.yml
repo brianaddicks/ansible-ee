@@ -14,7 +14,7 @@ dependencies:
       - ansible.utils
       - ansible.posix
       - microsoft.ad
-      - ansible.netcommon
+      - ansible.utils
   python:
     - pypsrp
     - 1password
