@@ -9,15 +9,15 @@ dependencies:
   galaxy:
     collections:
       - community.general
-      - community.crypto
-      - community.aws
-      - paloaltonetworks.panos
+      # - community.crypto
+      # - community.aws
+      # - paloaltonetworks.panos
   python:
     - cryptography
     - boto3
     - botocore
-    - pan-os-python
-    - pan-python
+    # - pan-os-python
+    # - pan-python
 
 options:
   package_manager_path: /usr/bin/microdnf
