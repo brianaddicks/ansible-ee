@@ -10,7 +10,7 @@ dependencies:
     collections:
       - community.general
       - community.crypto
-      - paloaltonetworks.panos
+      # - paloaltonetworks.panos
   python:
     - cryptography
     - boto3
