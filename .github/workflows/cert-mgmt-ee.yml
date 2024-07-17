@@ -21,7 +21,7 @@ on:
 jobs:
   call-deploy-workflow:
     # uses:  brianaddicks/ansible-ee/.github/workflows/deploy-builder3.yml@main
-    uses:  brianaddicks/ansible-ee/.github/workflows/deploy-multiarch3.yml@main
+    uses:  brianaddicks/ansible-ee/.github/workflows/deploy-multiarch6.yml@main
     with:
       EE_FOLDER_NAME: 'cert-mgmt-ee'
       EE_IMAGE_TAG: 'latest'
