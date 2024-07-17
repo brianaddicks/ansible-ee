@@ -12,6 +12,7 @@ dependencies:
       - community.crypto
       - paloaltonetworks.panos
   python:
+    - pyopenssl
     - cryptography
     - boto3
     - botocore
