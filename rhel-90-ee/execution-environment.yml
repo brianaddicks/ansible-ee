@@ -1,14 +1,79 @@
 ---
-version: 1
+version: 3
 
-ansible_config: './ansible.cfg'
+images:
+  base_image:
+    name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9:latest
 
 dependencies:
-  galaxy: requirements.yml
-  python: requirements.txt
+  galaxy:
+    collections:
+      - ansible.utils
+      - community.general
+      - redhat.rhel_system_roles
+      - redhat.insights
+      - ansible.posix
+    roles:
+      - linux-system-roles.firewall
+      - linux-system-roles.storage
+      - linux-system-roles.selinux
+      - redhatinsights.insights-client
+      - redhatofficial.rhel8_stig
+      - geerlingguy.nfs
+  python:
+    - jmespath
+
+options:
+  package_manager_path: /usr/bin/microdnf
+
+additional_build_files:
+  - src: files
+    dest: configs
 
 additional_build_steps:
-  prepend: |
-    RUN pip3 install --upgrade pip setuptools
-  append: |
+  # prepend_base:
+  #   - RUN pip3 install --upgrade pip setuptools
+  prepend_galaxy:
+    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+    - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN
+    - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN
+  append_final: |
     LABEL quay.expires-after="45d"
+
+# ---
+# version: 3
+
+# images:
+#   base_image:
+#     name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9:1.0.0-725
+
+# dependencies:
+#   galaxy:
+#     collections:
+#       - community.general
+#       - community.crypto
+#       - paloaltonetworks.panos
+#   python:
+#     - pyopenssl
+#     - cryptography
+#     - boto3
+#     - botocore
+#     - pan-os-python
+#     - pan-python
+
+# options:
+#   package_manager_path: /usr/bin/microdnf
+
+# additional_build_files:
+#   - src: files
+#     dest: configs
+
+# additional_build_steps:
+#   prepend_base:
+#     - RUN pip3 install --upgrade pip setuptools
+#   prepend_galaxy:
+#     - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+#     - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN
+#     - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN
+#   append_final: |
+#     LABEL quay.expires-after="45d"
