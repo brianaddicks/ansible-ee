@@ -12,6 +12,7 @@ dependencies:
       - community.crypto
       - paloaltonetworks.panos
       - netscaler.adc
+      - community.hashi_vault
   python:
     - pyopenssl
     - cryptography
@@ -19,6 +20,7 @@ dependencies:
     - botocore
     - pan-os-python
     - pan-python
+    - hvac
 
 options:
   package_manager_path: /usr/bin/microdnf
