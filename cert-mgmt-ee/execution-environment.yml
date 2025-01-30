@@ -2,42 +2,44 @@
 version: 3
 
 images:
-  base_image:
-    name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9:latest
+    base_image:
+        name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9:latest
 
 dependencies:
-  galaxy:
-    collections:
-      - community.general
-      - community.crypto
-      - paloaltonetworks.panos
-      - netscaler.adc
-      - community.hashi_vault
-  python:
-    - pyopenssl
-    - cryptography
-    - boto3
-    - botocore
-    - pan-os-python
-    - pan-python
-    - hvac
+    galaxy:
+        collections:
+            - community.general
+            - community.crypto
+            - paloaltonetworks.panos
+            - netscaler.adc
+            - community.hashi_vault
+            - community.windows
+    python:
+        - pyopenssl
+        - cryptography
+        - boto3
+        - botocore
+        - pan-os-python
+        - pan-python
+        - hvac
+        - pypsrp
 
 options:
-  package_manager_path: /usr/bin/microdnf
+    package_manager_path: /usr/bin/microdnf
 
 additional_build_files:
-  - src: files
-    dest: configs
+    - src: files
+      dest: configs
 
 additional_build_steps:
-  # prepend_base:
-  #   - RUN pip3 install --upgrade pip setuptools
-  prepend_galaxy:
-    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
-    - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN
-    - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN
-  append_final: |
-    LABEL quay.expires-after="45d"
+    # prepend_base:
+    #   - RUN pip3 install --upgrade pip setuptools
+    prepend_galaxy:
+        - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+        - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN
+        - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN
+    append_final: |
+        LABEL quay.expires-after="45d"
 
 # ---
 # version: 3
