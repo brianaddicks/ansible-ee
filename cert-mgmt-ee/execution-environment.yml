@@ -8,8 +8,7 @@ images:
 dependencies:
     galaxy:
         collections:
-            - name: community.general
-              version: 10.2.0
+            - community.general
             - community.crypto
             - paloaltonetworks.panos
             - netscaler.adc
