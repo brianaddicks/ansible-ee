@@ -3,8 +3,7 @@ version: 3
 
 images:
   base_image:
-    # name: registry.redhat.io/ansible-automation-platform-25/ee-minimal-rhel9:1.0.0-843
-    name: registry.redhat.io/ansible-automation-platform-25/ee-supported-rhel9:1.0.0-935
+    name: registry.redhat.io/ansible-automation-platform-25/ee-minimal-rhel9:1.0.0-843
 
 dependencies:
   galaxy:
@@ -14,6 +13,11 @@ dependencies:
       - ansible.controller
       - ansible.eda
       - infra.aap_configuration
+  system:
+    - pkgconf-pkg-config [platform:rpm]
+    - systemd-devel [platform:rpm]
+    - gcc [platform:rpm]
+    - python3.11-devel [platform:rpm]
 
 options:
   package_manager_path: /usr/bin/microdnf
