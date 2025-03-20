@@ -3,12 +3,16 @@ version: 3
 
 images:
   base_image:
-    name: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.15.4-4
+    name: registry.redhat.io/ansible-automation-platform-25/ee-minimal-rhel9:1.0.0-843
 
 dependencies:
   galaxy:
     collections:
-      - servicenow.itsm
+      - ansible.platform
+      - ansible.hub
+      - ansible.controller
+      - ansible.eda
+      - infra.aap_configuration
 
 options:
   package_manager_path: /usr/bin/microdnf
@@ -20,5 +24,6 @@ additional_build_files:
 additional_build_steps:
   prepend_galaxy:
     - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
+    - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN
   append_final: |
     LABEL quay.expires-after="45d"
