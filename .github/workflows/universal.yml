@@ -35,5 +35,8 @@ jobs:
 
       - name: List all changed files
         env:
-          ALL_CHANGED_FILES: ${{join(steps.run_tests.outputs.*, '\n')}}
-        run: echo $ALL_CHANGED_FILES
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          for file in ${ALL_CHANGED_FILES}; do
+            echo "$file was changed"
+          done
