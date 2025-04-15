@@ -34,8 +34,11 @@ on:
       QUAY_PASSWORD:
         description: 'needed for quay login'
         required: false
-      AH_TOKEN:
-        description: 'API token for hosted automation hub'
+      ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN:
+        description: 'API token for Red Hat certified Content'
+        required: false
+      ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN:
+        description: 'API token for Red Hat validated Content'
         required: false
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -118,8 +121,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            "ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN=${{ secrets.AH_TOKEN }}"
-            "ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN=${{ secrets.AH_TOKEN }}"
+            "ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN=${{ secrets.ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN }}"
+            "ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN=${{ secrets.ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN }}"
 
       # - name: Build image
       #   id: build-image

@@ -10,10 +10,6 @@ on:
     paths:
       - 'rhel-90-ee/**'
 
-  # Schedule workflow run at 00:00 on Sunday
-  # schedule:
-  #   - cron: '0 0 * * 0'
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -30,4 +26,5 @@ jobs:
       REDHAT_PASSWORD: ${{ secrets.REDHAT_PASSWORD }}
       QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
       QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
-      AH_TOKEN: ${{ secrets.AH_TOKEN }}
+      ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN: ${{ secrets.ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN }}
+      ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN: ${{ secrets.ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN }}

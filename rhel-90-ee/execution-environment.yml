@@ -26,15 +26,12 @@ dependencies:
 options:
   package_manager_path: /usr/bin/microdnf
 
-additional_build_files:
-  - src: files
-    dest: configs
+# additional_build_files:
+#   - src: files
+#     dest: configs
 
 additional_build_steps:
-  # prepend_base:
-  #   - RUN pip3 install --upgrade pip setuptools
   prepend_galaxy:
-    # - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
     - ENV ANSIBLE_GALAXY_SERVER_LIST=rh_certified_repo,rh_certified_repo_validated,release_galaxy
     - ENV ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_URL=https://console.redhat.com/api/automation-hub/content/published/
     - ENV ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_AUTH_URL=https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
