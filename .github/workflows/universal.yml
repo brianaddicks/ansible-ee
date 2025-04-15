@@ -35,5 +35,5 @@ jobs:
 
       - name: List all changed files
         env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs }}
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.* }}
         run: echo $ALL_CHANGED_FILES
