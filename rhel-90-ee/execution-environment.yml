@@ -5,6 +5,7 @@ images:
   base_image:
     name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9:latest
 
+
 dependencies:
   galaxy:
     collections:
