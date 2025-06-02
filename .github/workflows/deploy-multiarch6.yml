@@ -101,7 +101,9 @@ jobs:
 
       - name: Create the Dockerfile file
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
-        run: cp context/Containerfile context/Dockerfile
+        run: |
+            cp context/Containerfile context/Dockerfile
+            echo context/Dockerfile
 
       - name: add trusted CA if provided
         working-directory: ${{ inputs.EE_FOLDER_NAME }}/context/_build/
