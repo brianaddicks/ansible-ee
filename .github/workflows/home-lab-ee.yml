@@ -8,7 +8,7 @@ on:
     branches:
       - main
     paths:
-      - 'home-lab/**'
+      - 'home-lab-ee/**'
 
   # Schedule workflow run at 00:00 on Sunday
   schedule:
@@ -22,7 +22,7 @@ jobs:
   call-deploy-workflow:
     uses:  brianaddicks/ansible-ee/.github/workflows/deploy-multiarch6.yml@main
     with:
-      EE_FOLDER_NAME: 'home-lab'
+      EE_FOLDER_NAME: 'home-lab-ee'
       EE_IMAGE_TAG: 'latest'
 
     secrets:
