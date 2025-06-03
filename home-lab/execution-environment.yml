@@ -15,8 +15,14 @@ dependencies:
       - infra.aap_configuration
       - brianaddicks.rh_console_imagebuilder
       - community.general
+      - cloud.common
+      - vmware.vmware_rest
+      - community.vmware
   python:
     - jmespath
+    - aiohttp
+    - pyVmomi>=6.7
+    - git+https://github.com/vmware/vsphere-automation-sdk-python.git ; python_version >= '2.7' # Python 2.6 is not supported
   system:
     - pkgconf-pkg-config [platform:rpm]
     - systemd-devel [platform:rpm]
