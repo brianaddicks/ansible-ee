@@ -126,26 +126,6 @@ jobs:
             "ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN=${{ secrets.ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN }}"
             "ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN=${{ secrets.ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN }}"
 
-      # - name: Build image
-      #   id: build-image
-      #   working-directory: ${{ inputs.EE_FOLDER_NAME }}
-      #   run: |
-      #     ansible-builder build \
-      #     --tag=${{ inputs.EE_FOLDER_NAME }}:${{ inputs.EE_IMAGE_TAG }} \
-      #     --tag=${{ inputs.EE_FOLDER_NAME }}:${{ github.sha }}
-
-      # - name: Push To quay.io
-      #   id: push-to-quay
-      #   uses: redhat-actions/push-to-registry@v2
-      #   with:
-      #     image: ${{ inputs.EE_FOLDER_NAME }}
-      #     tags: |
-      #       ${{ inputs.EE_IMAGE_TAG }}
-      #       ${{ github.sha }}
-      #     registry: quay.io/${{ secrets.QUAY_USERNAME }}/
-      #     username: ${{ secrets.QUAY_USERNAME }}
-      #     password: ${{ secrets.QUAY_PASSWORD }}
-
       - name: Print summary
         working-directory: ${{ inputs.EE_FOLDER_NAME }}
         run: |
