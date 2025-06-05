@@ -24,6 +24,7 @@ jobs:
     with:
       EE_FOLDER_NAME: 'home-lab-ee'
       EE_IMAGE_TAG: 'latest'
+      CA: ${{ vars.VCENTER_CA }}
 
     secrets:
       REDHAT_USERNAME: ${{ secrets.REDHAT_USERNAME }}
