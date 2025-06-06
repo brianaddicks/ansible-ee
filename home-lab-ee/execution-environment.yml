@@ -12,12 +12,23 @@ dependencies:
       - ansible.hub
       - ansible.controller
       - ansible.eda
+      - ansible.utils
       - infra.aap_configuration
       - brianaddicks.rh_console_imagebuilder
       - community.general
       - cloud.common
       - vmware.vmware_rest
       - community.vmware
+      - redhat.rhel_system_roles
+      - redhat.insights
+      - ansible.posix
+    roles:
+      - linux-system-roles.firewall
+      - linux-system-roles.storage
+      - linux-system-roles.selinux
+      - redhatinsights.insights-client
+      - redhatofficial.rhel8_stig
+      - geerlingguy.nfs
   python:
     - jmespath
     - aiohttp
