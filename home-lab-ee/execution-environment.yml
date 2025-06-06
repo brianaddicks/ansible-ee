@@ -12,23 +12,12 @@ dependencies:
       - ansible.hub
       - ansible.controller
       - ansible.eda
-      - ansible.utils
       - infra.aap_configuration
       - brianaddicks.rh_console_imagebuilder
       - community.general
       - cloud.common
       - vmware.vmware_rest
       - community.vmware
-      - redhat.rhel_system_roles
-      - redhat.insights
-      - ansible.posix
-    roles:
-      - linux-system-roles.firewall
-      - linux-system-roles.storage
-      - linux-system-roles.selinux
-      - redhatinsights.insights-client
-      - redhatofficial.rhel8_stig
-      - geerlingguy.nfs
   python:
     - jmespath
     - aiohttp
@@ -52,14 +41,7 @@ additional_build_steps:
     - COPY _build/configs/vcenterCA.crt /usr/share/pki/ca-trust-source/anchors
     - RUN update-ca-trust
   prepend_galaxy:
-    - ENV ANSIBLE_GALAXY_SERVER_LIST=rh_certified_repo,rh_certified_repo_validated,release_galaxy
-    - ENV ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_URL=https://console.redhat.com/api/automation-hub/content/published/
-    - ENV ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_AUTH_URL=https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
     - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN
-    - ENV ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_URL=https://console.redhat.com/api/automation-hub/content/validated/
-    - ENV ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_AUTH_URL=https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
-    - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN
-    - ENV ANSIBLE_GALAXY_SERVER_RELEASE_GALAXY_URL=https://galaxy.ansible.com
-    - ARG ANSIBLE_GALAXY_CLI_COLLECTION_OPTS="-f"
   append_final: |
     LABEL quay.expires-after="45d"
