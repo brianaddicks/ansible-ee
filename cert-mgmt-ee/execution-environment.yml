@@ -23,11 +23,11 @@ dependencies:
     - pan-python
     - hvac
     - pypsrp
-  # system:
-  #   - gcc [platform:rpm]
-  #   - pkgconf-pkg-config [platform:rpm]
-  #   - python3.11-devel [platform:rpm]
-  #   - python3-pip [platform:rpm]
+  system:
+    #   - gcc [platform:rpm]
+    #   - pkgconf-pkg-config [platform:rpm]
+    #   - python3.11-devel [platform:rpm]
+    - python3-pip [platform:rpm]
   #   - systemd-devel [platform:rpm]
   #   - python3-setuptools [platform:rpm]
   #   - python3-devel [platform:rpm]
