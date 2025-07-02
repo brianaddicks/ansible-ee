@@ -1,5 +1,5 @@
 # Workflow name
-name: Certificate Management EE Build
+name: Cert Mgmt EE Build
 
 # Controls when the workflow will run
 on:
@@ -11,8 +11,8 @@ on:
       - 'cert-mgmt-ee/**'
 
   # Schedule workflow run at 00:00 on Sunday
-  # schedule:
-  #   - cron: '0 0 * * 0'
+  schedule:
+    - cron: '0 0 * * 0'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -20,7 +20,6 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   call-deploy-workflow:
-    # uses:  brianaddicks/ansible-ee/.github/workflows/deploy-builder3.yml@main
     uses:  brianaddicks/ansible-ee/.github/workflows/deploy-multiarch6.yml@main
     with:
       EE_FOLDER_NAME: 'cert-mgmt-ee'
@@ -31,4 +30,40 @@ jobs:
       REDHAT_PASSWORD: ${{ secrets.REDHAT_PASSWORD }}
       QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
       QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
-      AH_TOKEN: ${{ secrets.AH_TOKEN }}
+      ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN: ${{ secrets.ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN }}
+      ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN: ${{ secrets.ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN }}
+
+# # Workflow name
+# name: Certificate Management EE Build
+
+# # Controls when the workflow will run
+# on:
+#   # Triggers the workflow on push events but only for the main branch
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - 'cert-mgmt-ee/**'
+
+#   # Schedule workflow run at 00:00 on Sunday
+#   # schedule:
+#   #   - cron: '0 0 * * 0'
+
+#   # Allows you to run this workflow manually from the Actions tab
+#   workflow_dispatch:
+
+# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# jobs:
+#   call-deploy-workflow:
+#     # uses:  brianaddicks/ansible-ee/.github/workflows/deploy-builder3.yml@main
+#     uses:  brianaddicks/ansible-ee/.github/workflows/deploy-multiarch6.yml@main
+#     with:
+#       EE_FOLDER_NAME: 'cert-mgmt-ee'
+#       EE_IMAGE_TAG: 'latest'
+
+#     secrets:
+#       REDHAT_USERNAME: ${{ secrets.REDHAT_USERNAME }}
+#       REDHAT_PASSWORD: ${{ secrets.REDHAT_PASSWORD }}
+#       QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
+#       QUAY_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
+#       AH_TOKEN: ${{ secrets.AH_TOKEN }}
