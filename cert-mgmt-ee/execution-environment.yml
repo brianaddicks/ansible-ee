@@ -3,7 +3,6 @@ version: 3
 
 images:
   base_image:
-    # name: registry.redhat.io/ansible-automation-platform-25/ee-minimal-rhel9:1.0.0-935
     name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9:latest
 
 dependencies:
@@ -24,14 +23,6 @@ dependencies:
     - pan-python
     - hvac
     - pypsrp
-  # system:
-  #   - gcc [platform:rpm]
-  #   - pkgconf-pkg-config [platform:rpm]
-  #   - python3.11-devel [platform:rpm]
-  # - python3-pip [platform:rpm]
-  #   - systemd-devel [platform:rpm]
-  #   - python3-setuptools [platform:rpm]
-  #   - python3-devel [platform:rpm]
 
 options:
   package_manager_path: /usr/bin/microdnf
@@ -42,8 +33,6 @@ additional_build_files:
 
 additional_build_steps:
   prepend_galaxy:
-    # - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
-    # - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN
     - ENV ANSIBLE_GALAXY_SERVER_LIST=rh_certified_repo,rh_certified_repo_validated,release_galaxy
     - ENV ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_URL=https://console.redhat.com/api/automation-hub/content/published/
     - ENV ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_AUTH_URL=https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
@@ -55,46 +44,3 @@ additional_build_steps:
     - ARG ANSIBLE_GALAXY_CLI_COLLECTION_OPTS="-f"
   append_final: |
     LABEL quay.expires-after="45d"
-
-# ---
-# version: 3
-
-# images:
-#   base_image:
-#     name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel9:latest
-
-# dependencies:
-#   galaxy:
-#     collections:
-#       - community.general
-#       - community.crypto
-#       - paloaltonetworks.panos
-#       - netscaler.adc
-#       - community.hashi_vault
-#       - community.windows
-#   python:
-#     - pyopenssl
-#     - cryptography
-#     - boto3
-#     - botocore
-#     - pan-os-python
-#     - pan-python
-#     - hvac
-#     - pypsrp
-
-# options:
-#   package_manager_path: /usr/bin/microdnf
-
-# additional_build_files:
-#   - src: files
-#     dest: configs
-
-# additional_build_steps:
-#   # prepend_base:
-#   #   - RUN pip3 install --upgrade pip setuptools
-#   prepend_galaxy:
-#     - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
-#     - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_TOKEN
-#     - ARG ANSIBLE_GALAXY_SERVER_RH_CERTIFIED_REPO_VALIDATED_TOKEN
-#   append_final: |
-#     LABEL quay.expires-after="45d"
